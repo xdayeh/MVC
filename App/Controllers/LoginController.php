@@ -2,9 +2,9 @@
 
 namespace AbuDayeh\Controllers;
 
+use AbuDayeh\Core\Controller;
 use AbuDayeh\Core\Request;
 use AbuDayeh\Core\Response;
-use AbuDayeh\Core\Application;
 use AbuDayeh\Models\LoginModel;
 
 class LoginController extends Controller

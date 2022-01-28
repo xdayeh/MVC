@@ -2,8 +2,6 @@
 
 namespace AbuDayeh\Core;
 
-use AbuDayeh\Controllers\Controller;
-
 class Application
 {
     public static string $ROOT_DIR;

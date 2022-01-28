@@ -3,7 +3,7 @@
                 <div class="row py-1">
                     <div class="col fw-bold">
                         <small><?php echo 'AbuDayeh &copy '.date('Y');?></small>
-                        <a href="#" class="text-dark float-end">العربية</a>
+                        <a href="#" class="text-decoration-none text-dark float-end">العربية</a>
                     </div>
                 </div>
             </div>

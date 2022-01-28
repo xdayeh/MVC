@@ -1,8 +1,6 @@
 <?php
 
-namespace AbuDayeh\Controllers;
-
-use AbuDayeh\Core\Application;
+namespace AbuDayeh\Core;
 
 abstract class Controller
 {

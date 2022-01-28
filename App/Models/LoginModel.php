@@ -3,6 +3,7 @@
 namespace AbuDayeh\Models;
 
 use AbuDayeh\Core\Application;
+use AbuDayeh\Core\Model;
 
 class LoginModel extends Model
 {

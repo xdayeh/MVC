@@ -1,8 +1,6 @@
 <?php
 
-namespace AbuDayeh\Models;
-
-use AbuDayeh\Core\Application;
+namespace AbuDayeh\Core;
 
 abstract class Model
 {

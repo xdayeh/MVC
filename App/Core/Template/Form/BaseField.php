@@ -2,7 +2,7 @@
 
 namespace AbuDayeh\Core\Template\Form;
 
-use AbuDayeh\Models\Model;
+use AbuDayeh\Core\Model;
 
 abstract class BaseField
 {
