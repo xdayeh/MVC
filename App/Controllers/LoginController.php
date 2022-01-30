@@ -14,7 +14,6 @@ class LoginController extends Controller
     {
         if (!Application::isGuest()){
             $response->redirect();
-            return 0;
         }
         $this->setLayout('auth');
         $user = new LoginModel();
