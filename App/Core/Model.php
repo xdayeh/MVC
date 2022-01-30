@@ -4,10 +4,10 @@ namespace AbuDayeh\Core;
 
 abstract class Model
 {
-    abstract public function tableName(): string;
+    abstract static public function tableName(): string;
+    abstract static public function primaryKey();
     abstract public function attributes(): array;
     abstract public function rules(): array;
-    abstract public function primaryKey(): string;
 
     public const RULE_REQUIRED  = 'Required';
     public const RULE_EMAIL     = 'Email';
@@ -114,7 +114,7 @@ abstract class Model
         return $this->labels()[$attribute] ?? $attribute;
     }
 
-    public function prepare($sql)
+    public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
     }
@@ -133,7 +133,7 @@ abstract class Model
         return true;
     }
 
-    public function findOne($where)
+    public static function findOne($where)
     {
         $tableName = static::tableName();
         $attributes = array_keys($where);
@@ -145,4 +145,5 @@ abstract class Model
         $statement->execute();
         return $statement->fetchObject(static::class);
     }
+    
 }

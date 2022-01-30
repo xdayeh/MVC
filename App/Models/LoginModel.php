@@ -9,7 +9,7 @@ class LoginModel extends Model
 {
     public string $Email    = '';
     public string $Password = '';
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'users';
     }
@@ -17,7 +17,7 @@ class LoginModel extends Model
     {
         return ['Email', 'Password'];
     }
-    public function primaryKey(): string
+    public static function primaryKey(): string
     {
         return 'Userid';
     }
@@ -47,7 +47,6 @@ class LoginModel extends Model
             $this->addError('Password', 'Password Is Incorrect');
             return false;
         }
-
         return Application::$app->login($user);
     }
 }

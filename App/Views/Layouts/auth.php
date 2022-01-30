@@ -1,5 +1,5 @@
 <?php include_once 'Header.php'; ?>
-    <div class="container-fluid">
+    <div class="container">
 
         {{content}}
 

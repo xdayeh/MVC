@@ -4,6 +4,7 @@ namespace AbuDayeh\Core;
 
 class Application
 {
+    public string $userClass;
     public static string $ROOT_DIR;
     public static Application $app;
     public Request $request;
@@ -14,6 +15,7 @@ class Application
     public string $layout = 'main';
     public ?Controller $controller = null;
     public Database $db;
+    public ?Model $user;
 
     public function __construct($rootPath, array $config)
     {
@@ -25,6 +27,15 @@ class Application
         $this->router       = new Router($this->request, $this->response);
         $this->view         = new View();
         $this->db           = new Database($config['db']);
+        $this->userClass    = $config['userClass'];
+
+        $primaryValue       = $this->sessions->get('user');
+        if ($primaryValue) {
+            $primaryKey = $this->userClass::primaryKey();
+            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+        }else{
+            $this->user = null;
+        }
     }
 
     public function run()
@@ -37,5 +48,25 @@ class Application
                 'exception' => $e
             ]);
         }
+    }
+
+    public static function isGuest(): bool
+    {
+        return !self::$app->user;
+    }
+
+    public function login(Model $user): bool
+    {
+        $this->user = $user;
+        $primaryKey = $user->primaryKey();
+        $primaryValue = $user->{$primaryKey};
+        $this->sessions->set('user', $primaryValue);
+        return true;
+    }
+
+    public function logout()
+    {
+        $this->user = null;
+        $this->sessions->remove('user');
     }
 }

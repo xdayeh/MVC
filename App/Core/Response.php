@@ -12,5 +12,6 @@ class Response
     public function redirect($url = DS)
     {
         header('Location: '.$url);
+        exit();
     }
 }
