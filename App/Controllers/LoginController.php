@@ -12,9 +12,7 @@ class LoginController extends Controller
 {
     public function login(Request $request, Response $response)
     {
-        if (!Application::isGuest()){
-            $response->redirect();
-        }
+
         $this->setLayout('auth');
         $user = new LoginModel();
         if ($request->isPost()){
