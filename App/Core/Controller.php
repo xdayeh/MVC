@@ -6,7 +6,7 @@ abstract class Controller
 {
     public string $layout = 'main';
 
-    public function setLayout($layout)
+    public function setLayout($layout = 'auth')
     {
         $this->layout = $layout;
     }

@@ -23,11 +23,11 @@ class Router
         if (!$callback){
             throw new \Exception("Page Not Found", 404);
         }
-
+        /**
         if (is_string($callback)){
-            return Application::$app->view->renderView($callback);
+            return Application::$app->controller->renderView($callback);
         }
-
+        **/
         if (is_array($callback)){
             $controller = new $callback[0]();
             Application::$app->controller = $controller;

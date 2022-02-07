@@ -21,7 +21,9 @@ class View
             $layout =  Application::$app->controller->layout;
         }
         ob_start();
+        include_once 'Template'.DS.'Header.php';
         include_once Application::$ROOT_DIR.'Views'.DS.'Layouts'.DS."$layout.php";
+        include_once 'Template'.DS.'Footer.php';
         return ob_get_clean();
     }
 

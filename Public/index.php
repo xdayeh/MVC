@@ -10,6 +10,7 @@ use AbuDayeh\Models\LoginModel;
 
 define('DS', DIRECTORY_SEPARATOR);
 define('APP_PATH', realpath(dirname(__FILE__)) . DS . '..' . DS . 'App' . DS);
+define('LANGUAGES_PATH', APP_PATH . DS . 'Core' . DS . 'Languages' . DS);
 define('URL_XP', "http://" . $_SERVER["SERVER_NAME"] . substr($_SERVER["PHP_SELF"], 0, strrpos($_SERVER["PHP_SELF"], DS)) . DS);
 define('CSS', URL_XP . 'style'. DS . 'stylesheet' . DS);
 define('JS',  URL_XP . 'style'. DS . 'javascript' . DS);
@@ -34,5 +35,4 @@ $app->router->get(DS.'logout', [LoginController::class, 'logout']);
 
 $app->router->get(DS.'dashboard', [DashController::class, 'dashboard']);
 $app->router->get(DS.'profile', [DashController::class, 'profile']);
-
 $app->run();

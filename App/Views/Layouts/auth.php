@@ -1,7 +1,5 @@
-<?php include_once 'Header.php'; ?>
-    <div class="container">
+<div class="container">
 
-        {{content}}
+    {{content}}
 
-    </div>
-<?php include_once 'Footer.php'; ?>
+</div>
