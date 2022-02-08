@@ -2,6 +2,8 @@
 
 namespace AbuDayeh\Core;
 
+use Exception;
+
 class Router
 {
     public Request $request;
@@ -14,6 +16,9 @@ class Router
         $this->response = $response;
     }
 
+    /**
+     * @throws Exception
+     */
     public function resolve()
     {
         $path       = $this->request->path();
@@ -21,7 +26,7 @@ class Router
         $callback   = $this->routes[$method][$path] ?? false;
 
         if (!$callback){
-            throw new \Exception("Page Not Found", 404);
+            throw new Exception("Page Not Found", 404);
         }
         /**
         if (is_string($callback)){
@@ -39,7 +44,6 @@ class Router
             }
              */
         }
-
         return call_user_func($callback, $this->request, $this->response);
     }
 

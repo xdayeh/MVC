@@ -4,7 +4,7 @@ namespace AbuDayeh\Core;
 
 class Language
 {
-    private array $dictionary = [];
+    public array $dictionary = [];
 
     public function load($path)
     {

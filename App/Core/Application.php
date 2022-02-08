@@ -2,20 +2,22 @@
 
 namespace AbuDayeh\Core;
 
+use Exception;
+
 class Application
 {
-    public string $userClass;
     public static string $ROOT_DIR;
     public static Application $app;
+    public string $layout = 'main';
+    public string $userClass;
     public Request $request;
     public Response $response;
     public Sessions $sessions;
     public Router $router;
-    public View $view;
-    public string $layout = 'main';
     public ?Controller $controller = null;
     public Database $db;
     public ?Model $user;
+    public View $view;
 
     public function __construct($rootPath, array $config)
     {
@@ -28,7 +30,6 @@ class Application
         $this->view         = new View();
         $this->db           = new Database($config['db']);
         $this->userClass    = $config['userClass'];
-
         $primaryValue       = $this->sessions->get('user');
         if ($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
@@ -42,7 +43,7 @@ class Application
     {
         try {
             echo $this->router->resolve();
-        }catch (\Exception $e){
+        }catch (Exception $e){
             $this->response->setStatusCode($e->getCode());
             echo $this->view->renderView('_error', [
                 'exception' => $e

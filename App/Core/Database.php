@@ -2,9 +2,12 @@
 
 namespace AbuDayeh\Core;
 
+use PDO;
+use PDOException;
+
 class Database
 {
-    public \PDO $pdo;
+    public PDO $pdo;
 
     public function __construct(array $config)
     {
@@ -13,11 +16,11 @@ class Database
         $Password   = $config['Password'] ?? '';
         $DbName     = $config['DbName'] ?? '';
         try {
-            $this->pdo = new \PDO('mysql:host=' . $HostName . ';dbname=' . $DbName, $UserName, $Password, array(
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+            $this->pdo = new PDO('mysql:host=' . $HostName . ';dbname=' . $DbName, $UserName, $Password, array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
             ));
-        }catch (\PDOException $e){
+        }catch (PDOException $e){
             echo $e->getMessage();
             exit();
         }
